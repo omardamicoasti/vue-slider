@@ -10,31 +10,52 @@ var app = new Vue({
   el: "#root",
 
   data: {
+    playstopClass: "fas fa-play-circle",
     imagesCounter: 0,
     images: [
       "https://images.unsplash.com/photo-1556653922-ca7aa575c39f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1600965950524-532d27e7976e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1601984285629-b43dc028bcd9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    ]
+    ],
   },
 
-  methods : {
+
+  methods: {
+    // funzione per immagine precedente
     prevImage: function () {
       this.imagesCounter--;
       if (this.imagesCounter < 0) {
-        this.imagesCounter = (this.images.length - 1);
+        this.imagesCounter = this.images.length - 1;
       }
     },
+    // funzione per immagine successiva
     nextImage: function () {
       this.imagesCounter++;
       if (this.imagesCounter > this.images.length - 1) {
         this.imagesCounter = 0;
       }
     },
+    // funzione per autoplay
+    imagesAutoPlay: function () {
+      setInterval(() => {
+        this.nextImage();
+        this.playstopClass = "fas fa-stop";
+      }, 1500);
+      clearInterval();
+    },
+    // funzione per stoppare l'autoplay
+    refresher: function () {
+      location.reload();
+    },
+    // funzione per cambiare foto al click sui pallini
+    changeImage: function () {
+      
+    }
+  },
+});
 
-  }
-})
+
 
 
 

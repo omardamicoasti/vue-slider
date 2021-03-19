@@ -13,8 +13,8 @@
     <body>
         <div id="root" class="container">
             <div class="slider-wrapper">
-                <div class="playstop">
-                    <i class="fas fa-play-circle"></i>
+                <div class="playstop" @click="imagesAutoPlay" @dblclick="refresher">
+                    <i :class="playstopClass"></i>
                 </div>
                 <div class="prev" @click="prevImage">
                     <i class="fas fa-angle-left"></i>
@@ -26,8 +26,7 @@
                     <i class="fas fa-angle-right"></i>
                 </div>
                 <div class="nav">
-                    <i class="fas fa-circle" v-for="image in images"></i>
-                    
+                    <i class="fas fa-circle" :class="(i == imagesCounter) ? 'active' : null" v-for="(image, i) in images"></i>
                 </div>
             </div>
         </div>
