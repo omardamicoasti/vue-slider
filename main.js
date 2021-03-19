@@ -20,7 +20,6 @@ var app = new Vue({
     ],
   },
 
-
   methods: {
     // funzione per immagine precedente
     prevImage: function () {
@@ -38,9 +37,9 @@ var app = new Vue({
     },
     // funzione per autoplay
     imagesAutoPlay: function () {
+      this.playstopClass = "fas fa-stop";
       setInterval(() => {
         this.nextImage();
-        this.playstopClass = "fas fa-stop";
       }, 1500);
       clearInterval();
     },
@@ -48,10 +47,6 @@ var app = new Vue({
     refresher: function () {
       location.reload();
     },
-    // funzione per cambiare foto al click sui pallini
-    changeImage: function () {
-      
-    }
   },
 });
 
